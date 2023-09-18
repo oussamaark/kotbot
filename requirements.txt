@@ -1,6 +1,5 @@
 pyrogram
 requests
-re
 time
 bs4
 lxml
