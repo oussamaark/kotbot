@@ -1,0 +1,7 @@
+pyrogram
+requests
+os
+re
+time
+bs4
+lxml
