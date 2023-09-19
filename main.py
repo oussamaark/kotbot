@@ -26,7 +26,7 @@ def random(client, m):
     #random number 100-1500
     j = randint(100, 1500)
     url = f'https://www.kotobati.com/download-book/{j}'
-    proxy = {'http': 'http://35.263.207.242:33333'}
+    proxy = {'http': 'http://165.16.28.96:8080'}
     headers = {'User-Agent'
     :
     'Mozilla/5.0 (Linux; Android 11; SM-G975U) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.45 Mobile Safari/537.36'}
