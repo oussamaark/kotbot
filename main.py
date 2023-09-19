@@ -26,14 +26,11 @@ def random(client, m):
     #random number 100-1500
     j = randint(100, 1500)
     url = f'https://www.kotobati.com/download-book/{j}'
-    proxies = {'http': 'http://174.77.111.197:4145',
-    'https': 'https://174.77.111.197:4145'}
 
     headers = {'User-Agent'
     :
     'Mozilla/5.0 (Linux; Android 11; SM-G975U) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.45 Mobile Safari/537.36'}
-    #r = requests.get(url, headers=headers, verify=False, proxies=proxies)
-    r = requests.get(url, verify=False)
+    r = requests.get(url, headers=headers, verify=False)
     print(r.status_code)
     soup = BeautifulSoup(r.text, 'html.parser')
     namm = soup.find('div', class_='media row')
@@ -84,8 +81,8 @@ def main_search(client, message):
     headers = {'User-Agent'
     :
     'Mozilla/5.0 (Linux; Android 11; SM-G975U) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.45 Mobile Safari/537.36'}
-    #r = requests.get(url, headers=headers, verify=False)
-    r = requests.get(url, verify=False)
+    r = requests.get(url, headers=headers, verify=False)
+    
     soup = BeautifulSoup(r.text, 'html.parser')
 
     boxes = soup.find_all("div", {"class": "book-teaser"})
@@ -116,8 +113,7 @@ def main_search(client, message):
             img_url = 'https://www.kotobati.com' + img_url
             link = 'https://www.kotobati.com' + link
             
-            #response = requests.get(img_url, headers=headers, verify=False)
-            response = requests.get(img_url, verify=False)
+            response = requests.get(img_url, headers=headers, verify=False)
             msg = message.reply_text(f"جاري المعالجة ... ")
             #delet message reply_text
             time.sleep(1)
@@ -141,8 +137,7 @@ def get_dlink(link):
     url = f'{link}'
     encoded_url = quote(url, safe=':/')
     headers = {'User-Agent' : 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36 Edg/96.0.1054.46'}
-    #r = requests.get(url, headers=headers, verify=False)
-    r = requests.get(url, verify=False)
+    r = requests.get(url, headers=headers, verify=False)
     soup = BeautifulSoup(r.text, 'html.parser')
     element = soup.find('div', class_='col-md-12')
     if element:
@@ -155,8 +150,7 @@ def get_dlink(link):
             download_url = ""
         url = f'https://www.kotobati.com{download_url}'
         headers = {'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36 Edg/96.0.1054.46'}
-        #r = requests.get(url, headers=headers, verify=False)
-        r = requests.get(url, verify=False)
+        r = requests.get(url, headers=headers, verify=False)
         
         soup = BeautifulSoup(r.text, 'html.parser')
 
@@ -172,8 +166,7 @@ def get_info(book_link):
     url = f'{book_link}'
     headers = {'User-Agent' : 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36 Edg/96.0.1054.46'}
     
-    #r = requests.get(url , headers=headers, verify=False)
-    r = requests.get(url, verify=False)
+    r = requests.get(url , headers=headers, verify=False)
     soup = BeautifulSoup(r.text, 'html.parser')
     abouts = soup.find_all("div", {"class": "row py-4"})
     info_place = soup.find("div", {"class": "media-body col-md-10"})
@@ -222,8 +215,7 @@ def get_info(book_link):
     img1 = root.xpath('//div[@class="image"]/img/@data-src')
     img1 = ''.join(img1)
     img1 = 'https://www.kotobati.com' + img1
-    #response = requests.get(img1, headers=headers, verify=False)
-    response = requests.get(img1, verify=False)
+    response = requests.get(img1, headers=headers, verify=False)
     titll = book_title.replace(" ", "-")
     img_filename = f"imgfold/{titll}.jpg"
     with open(img_filename, 'wb') as f:
@@ -324,8 +316,7 @@ def callback_query(client, query):
             headers = {'User-Agent'
             :
             'Mozilla/5.0 (Linux; Android 11; SM-G975U) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.45 Mobile Safari/537.36'}
-            #r = requests.get(url, headers=headers, verify=False)
-            r = requests.get(url, verify=False)
+            r = requests.get(url, headers=headers, verify=False)
             
             soup = BeautifulSoup(r.text, 'html.parser')
             namm = soup.find('div', class_='media row')
