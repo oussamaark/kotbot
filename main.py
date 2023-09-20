@@ -26,11 +26,15 @@ def random(client, m):
     #random number 100-1500
     j = randint(100, 1500)
     url = f'https://www.kotobati.com/download-book/{j}'
-    proxy = {'http': 'http://41.65.236.37:1981'}
+    proxy = {'http': 'http://41.65.236.37:1981',
+             'http': 'http://181.215.178.253:1337',
+             'http': 'http://81.208.165.16:80'
+            
+            }
     headers = {'User-Agent'
     :
     'Mozilla/5.0 (Linux; Android 11; SM-G975U) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.45 Mobile Safari/537.36'}
-    r = requests.get(url, headers=headers, verify=False, proxies=proxy)
+    r = requests.get(url, proxies=proxy)
     print(r.status_code)
     soup = BeautifulSoup(r.text, 'html.parser')
     namm = soup.find('div', class_='media row')
